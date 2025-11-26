@@ -107,7 +107,7 @@ export default function Portfolio() {
           <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
             YS
           </div>
-          <div className="flex gap-8">
+          <div className="hidden md:flex md:gap-8">
             {['home', 'about', 'projects', 'vision', 'contact'].map(section => (
               <button
                 key={section}
