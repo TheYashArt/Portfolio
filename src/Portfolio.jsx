@@ -170,7 +170,7 @@ export default function Portfolio() {
           </div>
           
           {/* Photo Placeholder */}
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-fuchsia-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 animate-pulse"></div>
               <div className="relative w-80 h-80 bg-slate-800 rounded-2xl overflow-hidden flex items-center justify-center border-2 border-slate-700">
@@ -178,7 +178,7 @@ export default function Portfolio() {
                  <img src={profile} alt='profile' className='w-80 h-80'/>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
