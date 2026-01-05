@@ -358,7 +358,7 @@ export default function Portfolio() {
                   </div>
                   {project.link && (
                     <div className="px-3 mt-3 text-xl py-1 w-fit bg-slate-800 rounded-lg text-cyan-400 border border-slate-700">
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-fuchsia-600 font-bold">Get Demo</a>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-green-500 font-light">Get Demo</a>
                     </div>
                   )}
 
