@@ -60,8 +60,9 @@ export default function Portfolio() {
   const skills = {
     languages: ['Python', 'JavaScript', 'HTML/CSS', 'Java', 'SQL'],
     libraries: ['Numpy', 'Pandas', 'Matplotlib', 'Seaborn'],
-    frameworks: ['Flask', 'ReactJS', 'Tailwind', 'Bootstrap'],
-    tools: ['MySQL', 'PostgreSQL', 'VS Code', 'Git', 'GitHub', 'Tableau', 'Power BI', 'Excel']
+    frameworks: ['Flask', 'ReactJS', 'Tailwind', 'Bootstrap', "Streamlit", 'Langchain'],
+    tools: ['MySQL', 'PostgreSQL', 'VS Code', 'Git', 'GitHub', 'Tableau', 'Power BI', 'Excel'],
+    AIML: ['Scikit-learn', 'TensorFlow', 'Keras', 'PyTorch', 'LLM', "Ollama"]
   };
 
   const projects = [
@@ -82,6 +83,16 @@ export default function Portfolio() {
       technologies: ['React JS', 'JavaScript', 'CSS'],
       icon: <Code className="w-8 h-8" />,
       github: 'https://github.com/TheYashArt/blogs-app.git'
+    },
+    {
+      name: "PDFPulse",
+      tech: 'Python',
+      description: 'A PDF analysis tool using Langchain',
+      details: 'Tool that analyzes PDFs and extracts information using Langchain',
+      technologies: ['Python', 'Langchain', 'Groq', "Streamlit"],
+      icon: <Sparkles className="w-8 h-8" />,
+      github: 'https://github.com/TheYashArt/AskMyPDF.git',
+      link: 'https://pdf-pulse.streamlit.app/'
     }
   ];
 
@@ -89,7 +100,7 @@ export default function Portfolio() {
     <div className="bg-slate-950 text-white min-h-screen relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div 
+        <div
           className="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
           style={{
             left: `${mousePosition.x / 20}px`,
@@ -112,11 +123,10 @@ export default function Portfolio() {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`capitalize transition-all duration-300 ${
-                  activeSection === section
-                    ? 'text-cyan-400 font-semibold'
-                    : 'text-slate-400 hover:text-white'
-                }`}
+                className={`capitalize transition-all duration-300 ${activeSection === section
+                  ? 'text-cyan-400 font-semibold'
+                  : 'text-slate-400 hover:text-white'
+                  }`}
               >
                 {section === 'about' ? 'About Me' : section === 'contact' ? 'Contact' : section}
               </button>
@@ -127,9 +137,8 @@ export default function Portfolio() {
 
       {/* Home Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
-        <div className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${
-          isVisible.home ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${isVisible.home ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <div className="space-y-6">
             <div className="inline-block">
               <span className="text-cyan-400 text-sm font-semibold tracking-wider uppercase">
@@ -144,11 +153,11 @@ export default function Portfolio() {
             </h1>
             <p className="text-2xl text-slate-300">Data Analyst & Developer</p>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Transforming data into actionable insights and building intuitive web applications. 
+              Transforming data into actionable insights and building intuitive web applications.
               Passionate about data visualization, analytics, and creating seamless user experiences.
             </p>
             <div className="flex gap-4 pt-4">
-              <a href="https://github.com/TheYashArt" target="_blank" rel="noopener noreferrer" 
+              <a href="https://github.com/TheYashArt" target="_blank" rel="noopener noreferrer"
                 className="p-3 bg-slate-800 hover:bg-cyan-500 rounded-lg transition-all duration-300 hover:scale-110">
                 <Github className="w-6 h-6" />
               </a>
@@ -168,11 +177,11 @@ export default function Portfolio() {
               Get In Touch
             </button>
           </div>
-          
+
           {/* Photo Placeholder */}
-          
+
         </div>
-        
+
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <ChevronDown className="w-8 h-8 text-cyan-400" />
         </div>
@@ -180,13 +189,12 @@ export default function Portfolio() {
 
       {/* About Section */}
       <section id="about" className="min-h-screen py-20 relative">
-        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${
-          isVisible.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${isVisible.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
             About Me
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="space-y-6">
               <div className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-xl border border-slate-800 hover:border-cyan-500 transition-all duration-300">
@@ -291,6 +299,19 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
+              <div className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-xl border border-slate-800">
+                <h3 className="text-xl font-semibold mb-4 text-emerald-400">AI ML</h3>
+                <div className="flex flex-wrap gap-3">
+                  {skills.AIML.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="px-4 py-2 bg-slate-800 rounded-lg text-sm hover:bg-emerald-500/20 hover:border-emerald-500 border border-slate-700 transition-all duration-300 hover:scale-105"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -298,43 +319,51 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <section id="projects" className="min-h-screen py-20 relative">
-        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${
-          isVisible.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${isVisible.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, i) => (
-              <div
-                key={i}
-                className="group bg-slate-900/50 backdrop-blur-sm p-8 rounded-xl border border-slate-800 hover:border-cyan-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg text-white group-hover:scale-110 transition-transform duration-300">
-                    {project.icon}
+              <a href={project.github} target="_blank" rel="noopener noreferrer" key={i}>
+                <div
+                  key={i}
+                  className="group bg-slate-900/50 backdrop-blur-sm p-8 rounded-xl border border-slate-800 hover:border-cyan-500 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
+
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg text-white group-hover:scale-110 transition-transform duration-300">
+                      {project.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">{project.name}</h3>
+                      <p className="text-slate-400 text-sm">{project.tech}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold">{project.name}</h3>
-                    <p className="text-slate-400 text-sm">{project.tech}</p>
+
+                  <p className="text-slate-300 mb-4">{project.description}</p>
+                  <p className="text-slate-400 text-sm mb-6">{project.details}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, j) => (
+                      <span
+                        key={j}
+                        className="px-3 py-1 bg-slate-800 rounded-full text-xs text-cyan-400 border border-slate-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
+                  {project.link && (
+                    <div className="px-3 mt-3 text-xl py-1 w-fit bg-slate-800 rounded-lg text-cyan-400 border border-slate-700">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-fuchsia-600 font-bold">Get Demo</a>
+                    </div>
+                  )}
+
                 </div>
-                
-                <p className="text-slate-300 mb-4">{project.description}</p>
-                <p className="text-slate-400 text-sm mb-6">{project.details}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, j) => (
-                    <span
-                      key={j}
-                      className="px-3 py-1 bg-slate-800 rounded-full text-xs text-cyan-400 border border-slate-700"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -342,24 +371,23 @@ export default function Portfolio() {
 
       {/* Vision Section */}
       <section id="vision" className="min-h-screen py-20 relative flex items-center">
-        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${
-          isVisible.vision ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${isVisible.vision ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
               My Vision
             </h2>
             <Target className="w-16 h-16 mx-auto text-cyan-400 animate-pulse" />
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="bg-slate-900/50 backdrop-blur-sm p-12 rounded-2xl border border-slate-800 hover:border-purple-500 transition-all duration-500">
               <p className="text-xl text-slate-300 leading-relaxed mb-6 text-center">
-                To become a leading data scientist who bridges the gap between complex data analysis and 
-                actionable business insights. I envision creating innovative solutions that leverage 
+                To become a leading data scientist who bridges the gap between complex data analysis and
+                actionable business insights. I envision creating innovative solutions that leverage
                 machine learning and data visualization to solve real-world problems.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center space-y-3 group">
                   <div className="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -368,7 +396,7 @@ export default function Portfolio() {
                   <h3 className="text-lg font-semibold text-cyan-400">Data Innovation</h3>
                   <p className="text-slate-400 text-sm">Building cutting-edge data solutions</p>
                 </div>
-                
+
                 <div className="text-center space-y-3 group">
                   <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Code className="w-8 h-8" />
@@ -376,7 +404,7 @@ export default function Portfolio() {
                   <h3 className="text-lg font-semibold text-purple-400">Clean Code</h3>
                   <p className="text-slate-400 text-sm">Writing maintainable, efficient code</p>
                 </div>
-                
+
                 <div className="text-center space-y-3 group">
                   <div className="w-16 h-16 mx-auto bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <BarChart3 className="w-8 h-8" />
@@ -392,19 +420,18 @@ export default function Portfolio() {
 
       {/* Contact Section */}
       <section id="contact" className="min-h-screen py-20 relative flex items-center">
-        <div className={`max-w-7xl mx-auto px-6 w-full transition-all duration-1000 ${
-          isVisible.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`max-w-7xl mx-auto px-6 w-full transition-all duration-1000 ${isVisible.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <h2 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
             Get In Touch
           </h2>
-          
+
           <div className="max-w-2xl mx-auto">
             <div className="bg-slate-900/50 backdrop-blur-sm p-10 rounded-2xl border border-slate-800">
               <p className="text-center text-slate-300 mb-12 text-lg">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
               </p>
-              
+
               <div className="space-y-6">
                 <a
                   href="mailto:shelkey810@gmail.com"
